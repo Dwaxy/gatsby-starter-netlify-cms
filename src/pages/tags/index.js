@@ -8,13 +8,12 @@ const TagsPage = ({
 }) => (
   <section className="section">
     <Helmet title={`Tags | ${title}`} />
-    <div className="container content">
-      <div className="columns">
+    <div className="">
+      <div className="">
         <div
-          className="column is-10 is-offset-1"
-          style={{ marginBottom: '6rem' }}
+          className=""
         >
-          <h1 className="title is-size-2 is-bold-light">Tags</h1>
+          <h1 className="title">Tags</h1>
           <ul className="taglist">
             {group.map(tag => (
               <li key={tag.fieldValue}>

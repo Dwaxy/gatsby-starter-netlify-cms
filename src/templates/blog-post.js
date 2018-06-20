@@ -7,39 +7,43 @@ import Content, { HTMLContent } from '../components/Content'
 
 export const BlogPostTemplate = ({
   content,
-  contentComponent,
+  //contentComponent,
   description,
   tags,
   title,
   helmet,
 }) => {
-  const PostContent = contentComponent || Content
+  //const PostContent = contentComponent || Content
 
   return (
-    <section className="section">
+    <section className="blog-view">
       {helmet || ''}
-      <div className="container content">
-        <div className="columns">
-          <div className="column is-10 is-offset-1">
-            <h1 className="title is-size-2 has-text-weight-bold is-bold-light">
-              {title}
-            </h1>
-            <p>{description}</p>
-            <PostContent content={content} />
-            {tags && tags.length ? (
-              <div style={{ marginTop: `4rem` }}>
-                <h4>Tags</h4>
-                <ul className="taglist">
-                  {tags.map(tag => (
-                    <li key={tag + `tag`}>
-                      <Link to={`/tags/${kebabCase(tag)}/`}>{tag}</Link>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            ) : null}
-          </div>
+      <div className="">
+        <div className="blog-header">
+          <h1 className="title">
+            {title}
+          </h1>
+         {/* <PostContent content={content} /> */}
+          <p className="desc">{description}</p>
         </div>
+        
+        <div className="blog-content">
+          <div className="content" dangerouslySetInnerHTML={{ __html: content }}></div>
+        </div>
+
+        {tags && tags.length ? (
+          <div className="tag-holder">
+            <h4>Tags</h4>
+            <ul className="taglist">
+              {tags.map(tag => (
+                <li key={tag + `tag`}>
+                  <Link to={`/tags/${kebabCase(tag)}/`}>{tag}</Link>
+                </li>
+              ))}
+            </ul>
+          </div>
+        ) : null}
+            
       </div>
     </section>
   )
@@ -59,7 +63,7 @@ const BlogPost = ({ data }) => {
   return (
     <BlogPostTemplate
       content={post.html}
-      contentComponent={HTMLContent}
+      // contentComponent={HTMLContent}
       description={post.frontmatter.description}
       helmet={<Helmet title={`${post.frontmatter.title} | Blog`} />}
       tags={post.frontmatter.tags}
