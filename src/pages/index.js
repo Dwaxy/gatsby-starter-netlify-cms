@@ -10,12 +10,8 @@ export default class IndexPage extends React.Component {
 
     return (
       <section className="home">
-      
-        <div className="left">
-          <PostTimeline />
-        </div>
         
-        <div className="mid">
+        <div className="left">
           <BlogFeed postData={data.allMarkdownRemark}/>
         </div>
         

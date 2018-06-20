@@ -11,19 +11,23 @@ const BlogFeed = (props) => {
       </div>
       {props.postData.edges
         .map(({ node: post }) => (
-          <div className="blog-preview" key={post.id}>
-            <h2 className="title">
-              <Link className="has-text-primary" to={post.fields.slug}>
-                {post.frontmatter.title}
+          <div className="blog-preview-holder" key={post.id}>
+            <div className="blog-preview">
+              <h2 className="title">
+                <Link className="has-text-primary" to={post.fields.slug}>
+                  {post.frontmatter.title}
+                </Link>
+              </h2>
+              <p className="preview">
+                {post.excerpt}
+              </p>
+              <Link className="read-more" to={post.fields.slug}>
+                Keep Reading →
               </Link>
-            </h2>
-            <p className="preview">
-              {post.excerpt}
-            </p>
-            <Link className="read-more" to={post.fields.slug}>
-              Keep Reading →
-            </Link>
-            <small className="date">{post.frontmatter.date}</small>
+            </div>
+            <div className="date-holder">
+              <small className="date">{post.frontmatter.date}</small>
+            </div>
           </div>
         ))}
           
