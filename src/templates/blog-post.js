@@ -5,6 +5,8 @@ import Helmet from 'react-helmet'
 import Link from 'gatsby-link'
 import Content, { HTMLContent } from '../components/Content'
 
+import Img from 'gatsby-image'
+
 export const BlogPostTemplate = ({
   content,
   //contentComponent,
@@ -12,6 +14,7 @@ export const BlogPostTemplate = ({
   tags,
   title,
   helmet,
+  image,
 }) => {
   //const PostContent = contentComponent || Content
 
@@ -19,6 +22,7 @@ export const BlogPostTemplate = ({
     <section className="blog-view">
       {helmet || ''}
       <div className="">
+      <Img sizes={image} />
         <div className="blog-header">
           <h1 className="title">
             {title}
@@ -68,6 +72,7 @@ const BlogPost = ({ data }) => {
       helmet={<Helmet title={`${post.frontmatter.title} | Blog`} />}
       tags={post.frontmatter.tags}
       title={post.frontmatter.title}
+      image={post.frontmatter.featuredImage.childImageSharp.sizes}
     />
   )
 }
@@ -90,6 +95,13 @@ export const pageQuery = graphql`
         title
         description
         tags
+        featuredImage {
+          childImageSharp{
+            sizes(maxWidth: 1000) {
+              ...GatsbyImageSharpSizes
+            }
+          }
+        }
       }
     }
   }

@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import Link from 'gatsby-link'
 
+import Img from 'gatsby-image'
+
 const BlogFeed = (props) => {
   return (
     <section className="blog-feed">
@@ -12,6 +14,10 @@ const BlogFeed = (props) => {
       {props.postData.edges
         .map(({ node: post }) => (
           <div className="blog-preview-holder" key={post.id}>
+          
+          {console.log(post)}
+          <Img sizes={post.frontmatter.featuredImage.childImageSharp.sizes} />
+          
             <div className="blog-preview">
               <h2 className="title">
                 <Link className="has-text-primary" to={post.fields.slug}>
