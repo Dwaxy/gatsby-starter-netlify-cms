@@ -17,7 +17,6 @@ export const BlogPostTemplate = ({
   image,
 }) => {
   //const PostContent = contentComponent || Content
-
   return (
     <section className="blog-view">
       {helmet || ''}
