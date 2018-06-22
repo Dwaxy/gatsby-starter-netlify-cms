@@ -2,6 +2,14 @@ const _ = require('lodash')
 const path = require('path')
 const { createFilePath } = require('gatsby-source-filesystem')
 
+
+const { fmImagesToRelative } = require('gatsby-remark-relative-images')
+ 
+exports.onCreateNode = ({ node }) => {
+  fmImagesToRelative(node);
+};
+
+
 exports.createPages = ({ boundActionCreators, graphql }) => {
   const { createPage } = boundActionCreators
 
