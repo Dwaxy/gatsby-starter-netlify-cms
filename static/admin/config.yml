@@ -4,7 +4,7 @@ backend:
 
 # media_folder: static/img
 media_folder: src/pages/blog
-public_folder: /img
+public_folder: src/pages/blog
 
 # media_folder: src/img
 #public folder is omitted because it won't matter
